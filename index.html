@@ -49,8 +49,23 @@ footer h2{font-size:34px}footer a{color:var(--khaki)}
 .me{max-width:380px;justify-self:end;width:100%}.me img{aspect-ratio:4/5;object-fit:cover;object-position:top}
 @media(max-width:760px){.me{order:-1;justify-self:start;max-width:260px}.hero,.split,.two{grid-template-columns:1fr}.hero{padding-top:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Added: interactive case study section */
+.case-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.case-tab{appearance:none;border:1px solid var(--line);background:var(--surf);color:var(--ink);padding:10px 15px;border-radius:4px;font:600 15px Archivo,system-ui,sans-serif;cursor:pointer}
+.case-tab[aria-selected="true"]{background:var(--olive);color:#fff;border-color:var(--olive)}
+.case-panel{background:var(--surf);border:1px solid var(--line);padding:22px;border-radius:4px}
+.case-panel h3{font-size:23px;margin-bottom:10px}
+.case-panel h4{font-size:16px;margin:18px 0 5px;color:var(--red)}
+.case-panel p{margin:0;color:var(--mut)}
+.case-panel ul{margin:6px 0 0;padding-left:20px;color:var(--mut)}
+.case-panel li{margin-bottom:5px}
+.case-meta{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.case-meta span{background:var(--bg);border:1px solid var(--line);padding:3px 10px;border-radius:99px;font-size:14px}
+.case-panel[hidden]{display:none}
+
 </style></head><body>
-<nav><div class="w"><a href="#about">About</a><a href="#ops">Operations</a><a href="#lead">Leadership</a><a href="#gdg">GDG</a><a href="#tech">Tech &amp; Product</a><a href="#project">Project</a><a href="#edu">Education</a><a href="#contact">Contact</a></div></nav>
+<nav><div class="w"><a href="#about">About</a><a href="#ops">Operations</a><a href="#lead">Leadership</a><a href="#gdg">GDG</a><a href="#tech">Tech &amp; Product</a><a href="#project">Project</a><a href="#case-studies">Case Studies</a><a href="#edu">Education</a><a href="#contact">Contact</a></div></nav>
 
 <header class="w hero" id="top">
 <div>
@@ -131,6 +146,73 @@ footer h2{font-size:34px}footer a{color:var(--khaki)}
 <div class="it"><h3>Analyse</h3><ul><li>Built pivot tables and charts to show ratings by theme and recurring issues.</li><li>Applied root cause analysis to separate symptoms from process gaps.</li></ul></div>
 <div class="it"><h3>Present</h3><ul><li>Built a simple dashboard so non-technical readers could follow the issues quickly.</li></ul></div>
 </div></div></section>
+
+
+<section id="case-studies"><div class="w">
+<h2>Dynamic Product Case Studies</h2>
+<p class="lead">Three product-thinking case studies. Select a case study to explore the problem, research approach, proposed solution, success metrics and key learnings.</p>
+<div class="case-tabs" role="tablist" aria-label="Product case studies">
+<button class="case-tab" id="tab-swiggy" type="button" role="tab" aria-controls="case-swiggy" aria-selected="true" data-case="swiggy">Swiggy · Food Delivery</button>
+<button class="case-tab" id="tab-finance" type="button" role="tab" aria-controls="case-finance" aria-selected="false" data-case="finance">Personal Finance Coach</button>
+<button class="case-tab" id="tab-study" type="button" role="tab" aria-controls="case-study" aria-selected="false" data-case="study">AI Study Assistant</button>
+</div>
+
+<article class="case-panel" id="case-swiggy" role="tabpanel" aria-labelledby="tab-swiggy">
+<h3>Case Study 01: Improving the Swiggy Food Delivery Experience</h3>
+<p>Product challenge: reduce uncertainty and frustration when an order is delayed, while helping customers make confident decisions during the delivery journey.</p>
+<div class="case-meta"><span>Product discovery</span><span>Customer experience</span><span>Prioritisation</span><span>Metrics</span></div>
+<h4>1. Problem statement</h4><p>Customers may lose trust when estimated delivery times change, order status is unclear, or support options are difficult to find. These are hypotheses to validate through user research and product data.</p>
+<h4>2. Target users and research</h4><ul><li>People ordering meals during work breaks, evenings or busy periods.</li><li>Review customer feedback, support contacts, late-delivery rates, ETA changes and repeat-order behaviour.</li><li>Interview customers who experienced both on-time and delayed orders to identify the moments that create the most uncertainty.</li></ul>
+<h4>3. Proposed solution</h4><ul><li>Show a clear delivery timeline with meaningful status updates.</li><li>Explain ETA changes in plain language and refresh estimates when new information is available.</li><li>Make help options easy to find when an order is significantly delayed.</li><li>Test proactive notifications against the existing experience before a wider rollout.</li></ul>
+<h4>4. Prioritisation and success metrics</h4><ul><li>Prioritise accurate status and ETA communication first because they address uncertainty across many orders.</li><li>Track ETA accuracy, delay-related support contacts, customer satisfaction, cancellations and repeat-order rate.</li><li>Run an A/B test and monitor guardrail metrics such as notification opt-outs and support workload.</li></ul>
+<h4>5. Expected outcome and learning</h4><p>Expected outcome: a more transparent delivery journey and fewer avoidable “Where is my order?” contacts. This is a proposed case-study outcome, not a claim of measured Swiggy results. Validate impact with an experiment.</p>
+</article>
+
+<article class="case-panel" id="case-finance" role="tabpanel" aria-labelledby="tab-finance" hidden>
+<h3>Case Study 02: Personal Finance Coach</h3>
+<p>Product challenge: help students and early-career users understand spending patterns and build practical money habits without making financial decisions on their behalf.</p>
+<div class="case-meta"><span>User research</span><span>Personalisation</span><span>Trust &amp; privacy</span><span>MVP</span></div>
+<h4>1. Problem statement</h4><p>Users may find it hard to track small recurring expenses, plan a budget and understand where their money goes. The product should make the next useful action simple, understandable and user-controlled.</p>
+<h4>2. Target users and research</h4><ul><li>Students and first-job professionals managing a limited monthly budget.</li><li>Conduct interviews and a short survey about budgeting habits, expense tracking friction and financial goals.</li><li>Map the journey from recording a transaction to reviewing spending and adjusting a budget.</li></ul>
+<h4>3. Proposed solution</h4><ul><li>A simple monthly budget with editable categories and spending summaries.</li><li>Expense categorisation with a way for users to correct mistakes.</li><li>Plain-language insights such as “Dining spend is higher than your plan this month,” with the figures and time period shown.</li><li>Optional reminders and small weekly goals, with easy controls to pause them.</li></ul>
+<h4>4. Trust, safety and MVP scope</h4><ul><li>Start with manual entry or a sample dataset; request access to sensitive financial data only if genuinely needed and with clear consent.</li><li>Explain how data is used, minimise collection and provide a way to export or delete it.</li><li>Present educational information rather than guaranteed outcomes or personalised investment instructions.</li><li>MVP: add expenses, set category budgets, view a summary and edit categorisation.</li></ul>
+<h4>5. Success metrics</h4><ul><li>Activation: users who create a budget and record their first expenses.</li><li>Engagement: weekly active budgeting users and weekly review completion.</li><li>Value: users reporting better awareness of spending and improved budget adherence.</li><li>Guardrails: categorisation correction rate, reminder opt-outs and privacy-related complaints.</li></ul>
+<h4>6. Expected outcome and learning</h4><p>Expected outcome: make spending patterns easier to understand and budgeting easier to maintain. Validate usefulness and trust with a small pilot before expanding features.</p>
+</article>
+
+<article class="case-panel" id="case-study" role="tabpanel" aria-labelledby="tab-study" hidden>
+<h3>Case Study 03: AI Study Assistant</h3>
+<p>Product challenge: help learners turn large amounts of study material into a focused, personalised study plan while keeping explanations reliable and learning active.</p>
+<div class="case-meta"><span>AI product design</span><span>Learning experience</span><span>RAG concept</span><span>Evaluation</span></div>
+<h4>1. Problem statement</h4><p>Students often struggle to decide what to study next, revise consistently and check whether they truly understand a topic. A generic chatbot may give broad answers that do not match their syllabus or source material.</p>
+<h4>2. Target users and research</h4><ul><li>School, college and placement-preparation learners with different deadlines and confidence levels.</li><li>Interview learners about planning, revision, doubt-solving and practice-test pain points.</li><li>Test whether learners prefer summaries, flashcards, quizzes or step-by-step explanations for different topics.</li></ul>
+<h4>3. Proposed solution</h4><ul><li>Let learners add notes or approved study documents and choose a subject, exam date and available study time.</li><li>Generate a weekly study plan, topic summaries, flashcards and practice quizzes from the selected material.</li><li>Use retrieval-augmented generation (RAG) as a design option so answers can be grounded in uploaded sources, with source references where possible.</li><li>Ask learners to attempt an answer before revealing hints or a full explanation.</li><li>Include “I’m not sure” behaviour and encourage source checking when evidence is missing or unclear.</li></ul>
+<h4>4. MVP and prioritisation</h4><ul><li>MVP: upload/select material, generate a summary, create a short quiz and track completed topics.</li><li>Next: spaced-revision reminders, adaptive difficulty and progress insights based on quiz performance.</li><li>Defer social features and complex integrations until the core learning loop is validated.</li></ul>
+<h4>5. Success metrics and quality checks</h4><ul><li>Activation: users who create a plan and complete their first learning activity.</li><li>Learning engagement: quiz completion, return rate and planned-session completion.</li><li>Learning value: improvement between diagnostic and follow-up quiz scores.</li><li>AI quality: source-grounding accuracy, factual error rate and user-reported helpfulness.</li><li>Guardrails: report rate for incorrect answers, accessibility issues and time-to-first-useful-answer.</li></ul>
+<h4>6. Expected outcome and learning</h4><p>Expected outcome: a more structured study workflow with clearer next steps and measurable learning progress. Treat AI answers as assistive, evaluate them against trusted material, and test learning outcomes rather than relying only on engagement.</p>
+</article>
+<p style="margin:14px 0 0;color:var(--mut);font-size:14px">Note: These are proposed product case studies for portfolio demonstration. Metrics and outcomes should be presented as hypotheses until supported by research or experiment data.</p>
+</div></section>
+
+<script>
+(function(){
+  const tabs = Array.from(document.querySelectorAll('.case-tab'));
+  const panels = Array.from(document.querySelectorAll('.case-panel'));
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      const target = tab.getAttribute('data-case');
+      tabs.forEach(function(item){
+        const active = item === tab;
+        item.setAttribute('aria-selected', active ? 'true' : 'false');
+        item.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(function(panel){
+        panel.hidden = panel.id !== 'case-' + target;
+      });
+    });
+  });
+})();
+</script>
 
 <section id="edu"><div class="w">
 <h2>Education and certifications</h2><p class="lead"></p>
